@@ -1,0 +1,12 @@
+{
+  "name": "reactssr",
+  "version": "0.0.1",
+  "private": false,
+  "author": "Kira",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "ISC"
+}

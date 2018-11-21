@@ -1,0 +1,17 @@
+@import 'variables/_color.scss';
+
+.flx{
+  display: flex;
+}
+.f1{
+  flex: 1;
+}
+.f2{
+  flex: 2;
+}
+
+.flx-sb{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
