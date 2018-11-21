@@ -1,0 +1,14 @@
+/* components/Authorization/Authorization.wxss */
+.reset-btn{
+  display: inline-block;
+  background: transparent;
+  line-height: 1.7;
+  border: 0 !important;
+  padding: 0;
+  margin: 0;
+  font-size: 32rpx;
+  border-radius: 0;
+}
+.reset-btn::after {
+  border: none
+} 

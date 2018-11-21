@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .box{
+      height: 2000px;
+      width: 100%;
+      background: #999;
+    }
+  </style>
+</head>
+<body>
+  <div class="box"></div>
+
+
+  <script>
+    // const scrollFn = () => {
+    //     console.log(1)
+    // }
+
+    // function throttle(method, delay){
+    //   let timer = null;
+    //   return function() {
+    //     clearTimeout(timer);
+    //     timer = setTimeout(() => {
+    //       method.call(this, arguments);
+    //     }, delay);
+    //   }
+    // }
+    // function throttle(method,delay){
+    //     var timer = null;
+    //     return function() {
+    //         console.log(timer)
+    //         var context=this, args=arguments;
+    //         clearTimeout(timer);
+    //         timer = setTimeout(function() {
+    //           method.apply(context, args);
+    //         }, delay);
+    //     }
+    // }
+    // window.onscroll = throttle(scrollFn(), 250)
+
+    // function throttle(method, delay, duration){
+    //   let timer = null;
+    //   let begin = new Date();  
+    //   return function() {
+    //     console.log('timer start', timer);
+    //     clearTimeout(timer);
+    //     console.log('timer end', timer);    
+    //     const current = new Date();
+    //     if(current - begin >= duration){
+    //       method.apply(this, arguments);
+    //       begin = current;
+    //     } else {
+    //       timer = setTimeout(() => {
+    //         method.apply(this, arguments);
+    //       }, delay);
+    //     }
+    //   }
+    // }
+    // window.onscroll = throttle(scrollFn, 100, 500);
+
+    function scrollFn(){
+      console.log(11111)
+    }
+
+    // 执行一次
+    // function throttle(method, context){
+    //   clearTimeout(method.index);
+    //   method.index = setTimeout(function(){
+    //     method.call(context)
+    //   }, 300)
+    // }
+
+  throttle = function(func, wait, options) {
+    var timeout, context, args, result;
+    var previous = 0;
+    if (!options) options = {};
+
+    var later = function() {
+      previous = options.leading === false ? 0 : new Date().getTime();
+      timeout = null;
+      result = func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+
+    var throttled = function() {
+      var now = new Date().getTime();
+      if (!previous && options.leading === false) previous = now;
+      var remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        previous = now;
+        result = func.apply(context, args);
+        if (!timeout) context = args = null;
+      } else if (!timeout && options.trailing !== false) {
+        timeout = setTimeout(later, remaining);
+      }
+      return result;
+    };
+
+    throttled.cancel = function() {
+      clearTimeout(timeout);
+      previous = 0;
+      timeout = context = args = null;
+    };
+
+    return throttled;
+  };
+
+
+  window.onscroll = throttle(scrollFn, 250)
+  </script>
+</body>
+</html>

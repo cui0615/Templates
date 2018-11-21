@@ -1,0 +1,8 @@
+<!-- 授权组件 -->
+<button
+  class="reset-btn"
+  open-type="getUserInfo"
+  bindgetuserinfo="bindGetUserInfo"
+>
+  <slot></slot>
+</button>
