@@ -1,5 +1,5 @@
 
-import app from '../src/controllers/base';
+import app from '../app/controllers/base';
 
 // Example
 test('isObject', () => {
