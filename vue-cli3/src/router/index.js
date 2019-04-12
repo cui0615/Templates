@@ -3,6 +3,9 @@ import Router from 'vue-router';
 import DemoRouter from './demo.router';
 
 import Home from '../pages/Home.vue';
+// import Demo from '../pages/demo.vue';
+
+import HoC from '../hoc/index';
 
 Vue.use(Router);
 
@@ -12,7 +15,7 @@ const RouterBase = {
     {
       path: '/',
       name: 'home',
-      component: Home,
+      component: HoC(Home, true),
     },
   ],
 };

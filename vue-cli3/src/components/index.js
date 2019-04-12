@@ -6,7 +6,7 @@ import Vue from 'vue';
  * @description 组件的名字就是name名字
  */
 const componentsContext = require.context('./global', true, /\.js$/);
-console.log('componentsContext:', componentsContext);
+// console.log('componentsContext:', componentsContext);
 componentsContext.keys().forEach((component) => {
   const componentConfig = componentsContext(component);
   /**
